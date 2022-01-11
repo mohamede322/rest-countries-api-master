@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sass/style.css" />
+    <link rel="stylesheet" href="sass/all.min.css" />
+    <title>FrontEnd Mentor - Rest Countries API</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Where in the world?</h1>
+        <div class="color-mode">
+          <p class="color-mode-btn"><i class="fas fa-moon"></i> Dark Mode</p>
+        </div>
+      </header>
+      <main class="main">
+        <div class="filter-side">
+          <div class="search">
+            <div class="search-header">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                id="search-bar"
+                placeholder="Search for a country by first letter..."
+                maxlength="1"
+                autofocus
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-results"></div>
+          </div>
+          <div class="filter">
+            <div class="filter-header">
+              <p>Filter by Region</p>
+              <i class="fas fa-caret-up arrow"></i>
+            </div>
+            <div class="filter-results">
+                <p>All</p>
+              <p>Africa</p>
+              <p>Americas</p>
+              <p>Asia</p>
+              <p>Europe</p>
+              <p>Oceania</p>
+            </div>
+          </div>
+        </div>
+        <div class="main-content"></div>
+      </main>
+      <div class="detailedPage">
+        <div class="detailedPage-header">
+          <i class="fas fa-long-arrow-alt-left"></i>
+          <p>Back</p>
+        </div>
+        <div class="detailedPage-content"></div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

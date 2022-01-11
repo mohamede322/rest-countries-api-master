@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+@import "./helpers/variables";
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: $Dark-Mode-Background;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+img {
+  max-width: 100%;
+}
+.container {
+  font-size: 14px;
+  width: 1440px;
+  margin: auto;
+  padding: 0 10px 50px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $sections-gap;
+  overflow: hidden;
+  .header {
+    font-size: 14px;
+    width: 100%;
+    background-color: $Dark-Mode-Elements;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px $in-sections-padding 15px;
+    color: $Dark-Mode-Text-Light-Mode-Elements;
+    box-shadow: $main-box-shadow;
+    p {
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.1s;
+      &:hover {
+        color: rgb(241, 241, 241);
+      }
+    }
+  }
+  .main {
+    display: flex;
+    font-size: 14px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $sections-gap;
+    .filter-side {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 $in-sections-padding 0;
+      .search {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        gap: $filtering-gap;
+        .search-header,
+        .search-results {
+          width: $filter-width;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 0 ($in-sections-padding / 2) 0;
+          background-color: $Dark-Mode-Elements;
+          border-radius: $main-b-radius;
+          color: white;
+          box-shadow: $main-box-shadow;
+          #search-bar {
+            flex: 1;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: white;
+            &::placeholder {
+              color: inherit;
+            }
+          }
+        }
+        .search-results {
+          flex-direction: column;
+          align-items: flex-start;
+          height: 200px;
+          overflow: auto;
+          padding: ($in-sections-padding / 3);
+          display: none;
+          transform: translateY(20px);
+          opacity: 0;
+          p {
+            width: 100%;
+            padding: 5px;
+            font-weight: bold;
+            transition: 0.2s;
+            cursor: context-menu;
+            &:hover {
+              background-color: $dark-mode-hover-color;
+            }
+          }
+        }
+      }
+      .filter {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        gap: $filtering-gap;
+        .filter-header,
+        .filter-results {
+          width: ($filter-width / 2);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: ($in-sections-padding / 3) ($in-sections-padding / 2);
+          background-color: $Dark-Mode-Elements;
+          border-radius: $main-b-radius;
+          box-shadow: $main-box-shadow;
+          color: white;
+        }
+        .filter-header {
+          cursor: pointer;
+        }
+        .filter-results {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          padding: ($in-sections-padding / 3);
+          gap: $filtering-gap;
+          display: none;
+          transform: translateY(20px);
+          opacity: 0;
+          p {
+            width: 100%;
+            padding: 5px;
+            transition: 0.2s;
+            cursor: context-menu;
+            &:hover {
+              background-color: $dark-mode-hover-color;
+            }
+          }
+        }
+      }
+    }
+    .main-content {
+      width: 100%;
+      display: grid;
+      padding: 0 $in-sections-padding 0;
+      gap: ($sections-gap + 30px);
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      .card {
+        border-radius: $main-b-radius;
+        background-color: $Dark-Mode-Elements;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        max-height: $card-height;
+        overflow: hidden;
+        color: $Dark-Mode-Text-Light-Mode-Elements;
+        box-shadow: $main-box-shadow;
+        &:hover {
+          .image {
+            img {
+              transform: scale(1);
+              filter: brightness(70%);
+            }
+          }
+        }
+        .image {
+          img {
+            position: relative;
+            border-top-right-radius: $main-b-radius;
+            border-top-left-radius: $main-b-radius;
+            transform: scale(1.1);
+            transition: 0.3s;
+          }
+        }
+        .info {
+          padding: $in-sections-padding/ 2;
+          h3 {
+            margin-bottom: 10px;
+          }
+          p {
+            line-height: 1.5;
+          }
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  .detailedPage {
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: $sections-gap;
+    color: $Dark-Mode-Text-Light-Mode-Elements;
+    display: none;
+    .detailedPage-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      background-color: $Dark-Mode-Elements;
+      padding: 10px 30px;
+      border-radius: $main-b-radius;
+      box-shadow: $main-box-shadow;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        background-color: $dark-mode-hover-color;
+      }
+    }
+    .detailedPage-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: $sections-gap * 2;
+      .detailedPage-image {
+        flex: 1;
+      }
+      .detailedPage-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: $sections-gap - 10px;
+        padding: $in-sections-padding * 2;
+        width: 500px;
+        h3 {
+          font-size: 40px;
+        }
+        .details {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+      .border-countries-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: $filtering-gap * 2;
+        .title {
+          font-weight: 600;
+        }
+        .b-countries {
+          font-size: 14px;
+          background-color: $Dark-Mode-Elements;
+          padding: 5px 20px;
+          border-radius: $main-b-radius;
+          box-shadow: $main-box-shadow;
+          cursor: pointer;
+          &:hover {
+            background-color: $dark-mode-hover-color;
+          }
+        }
+      }
+    }
+  }
+  @keyframes search {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 375px;
+    .header {
+      padding: 20px;
+      h1 {
+        font-size: 16px;
+      }
+    }
+    .main {
+      .main-content {
+        padding: 0 20px 0;
+      }
+      .filter-side {
+        gap: 20px;
+        justify-items: center;
+        align-items: center;
+        .search {
+          .search-header {
+            width: $filter-width / 4;
+            padding: 10px;
+            gap: 10px;
+            input {
+              overflow: hidden;
+              font-size: 10px;
+            }
+          }
+          .search-results {
+            width: $filter-width / 3;
+          }
+        }
+        .filter {
+          .filter-header {
+            width: $filter-width / 4;
+            padding: 10px;
+            p {
+              font-size: 10px;
+            }
+          }
+          .filter-results {
+            width: $filter-width / 4;
+            padding: 10px;
+          }
+        }
+      }
+    }
+
+    .detailedPage {
+      .detailedPage-content {
+        flex-direction: column;
+        .detailedPage-info {
+          padding: 10px;
+          width: 360px;
+          .details {
+            gap: 20px;
+          }
+        }
+        .border-countries-container {
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}
