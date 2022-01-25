@@ -15,6 +15,7 @@ let filterMenu = document.querySelector(".filter-header");
 let regions = document.querySelectorAll(".filter-results p");
 let icon = document.querySelector(".filter-header i");
 
+
 backBtn.addEventListener("click", () => {
   mainContainer.style.display = "flex";
   backBtn.remove();
@@ -66,43 +67,44 @@ async function getCountries() {
       mainContent.append(card);
 
       card.addEventListener("click", () => {
+        resetContent()
         detailedPage(country.name);
       });
 
       searchBar.addEventListener("input", () => {
-        searching();
+        searching(country);
       });
-      function searching() {
-        if (searchBar.value !== "") {
-          searchResults.style.display = "flex";
-          searchResults.style.animation = "search ease 0.5s forwards";
-          if (
-            country.name.startsWith(
-              `${
-                searchBar.value.toUpperCase() || searchBar.value.toLowerCase()
-              }`
-            )
-          ) {
-            searchResults.style.display = "flex";
-            searchResults.style.animation = "search ease 0.5s forwards";
-            let p = document.createElement("p");
-            p.innerHTML = country.name;
-            searchResults.append(p);
-            p.addEventListener("click", () => {
-              detailedPage(p.innerHTML);
-              searchBar.value = "";
-              searchBar.focus();
-              searchResults.style.animation = "unset";
-              searchResults.style.display = "none";
-            });
-          }
-        } else {
-          searchResults.style.animation = "unset";
-          searchResults.style.display = "none";
-          searchResults.innerHTML = "";
-        }
-      }
     });
+
+  }
+}
+
+function searching(country) {
+  let capitalized = searchBar.value.charAt(0).toUpperCase() + searchBar.value.slice(1)
+  if (searchBar.value !== "") {
+    searchResults.style.display = "flex";
+    searchResults.style.animation = "search ease 0.5s forwards";
+    if (
+      country.name.includes(capitalized || searchBar.value)
+    ) {
+      searchResults.style.display = "flex";
+      searchResults.style.animation = "search ease 0.5s forwards";
+      let p = document.createElement("p");
+      p.innerHTML = country.name;
+      searchResults.append(p);
+      p.addEventListener("click", () => {
+        resetContent()
+        detailedPage(p.innerHTML);
+        searchBar.value = "";
+        searchBar.focus();
+        searchResults.style.animation = "unset";
+        searchResults.style.display = "none";
+      });
+    }
+  } else {
+    searchResults.style.animation = "unset";
+    searchResults.style.display = "none";
+    searchResults.innerHTML = "";
   }
 }
 
@@ -209,7 +211,7 @@ function detailedPage(countryName) {
       detailedPageInfo.append(name, details, borderCountriesContainer);
 
       detailedPage.append(imgContainer, detailedPageInfo);
-      detailedPageContainer.append(detailedPage);
+      detailedPageContainer.append(backBtn,detailedPage);
     }
   }
 
@@ -285,8 +287,10 @@ async function sortByRegion(region) {
     mainContent.append(card);
 
     card.addEventListener("click", () => {
+      resetContent()
       detailedPage(countryName.innerHTML);
     });
+
   });
 }
 
