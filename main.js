@@ -1,5 +1,7 @@
 let allCountries = "https://restcountries.com/v2/all";
 
+const header = document.querySelector(".header")
+
 const mainContent = document.querySelector(".main-content");
 const mainContainer = document.querySelector(".main");
 
@@ -15,6 +17,22 @@ let filterMenu = document.querySelector(".filter-header");
 let regions = document.querySelectorAll(".filter-results p");
 let icon = document.querySelector(".filter-header i");
 
+let colorModeBtn = document.querySelector(".color-mode-btn")
+
+colorModeBtn.addEventListener("click" , changeColorMode)
+
+function changeColorMode() {
+  if (colorModeBtn.innerHTML === `<i class="fas fa-moon"></i> Dark Mode`) {
+    colorModeBtn.innerHTML = `<i class="fas fa-sun"></i> Light Mode`
+  }else {
+    colorModeBtn.innerHTML = `<i class="fas fa-moon"></i> Dark Mode`
+  }
+
+  document.body.classList.toggle("light-mode")
+  header.classList.toggle("light-mode")
+  mainContainer.classList.toggle("light-mode")
+  detailedPageContainer.classList.toggle("light-mode")
+}
 
 backBtn.addEventListener("click", () => {
   mainContainer.style.display = "flex";

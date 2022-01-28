@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 @import "./helpers/variables";
-
+.light-mode {
+  background-color: $Light-Mode-Background;
+}
 body {
   font-family: "Nunito Sans", sans-serif;
   background-color: $Dark-Mode-Background;
@@ -25,6 +27,80 @@ img {
   align-items: center;
   gap: $sections-gap;
   overflow: hidden;
+
+  .header.light-mode,
+  .main.light-mode {
+    background-color: $Dark-Mode-Text-Light-Mode-Elements;
+    color: $Light-Mode-Text;
+  }
+  .header.light-mode {
+    p {
+      &:hover {
+        color: rgb(20, 20, 20);
+      }
+    }
+  }
+  .main.light-mode {
+    .filter-side {
+      .search {
+        .search-header,
+        .search-results {
+          background-color: $Dark-Mode-Text-Light-Mode-Elements;
+          color: $Light-Mode-Text;
+          #search-bar {
+            color: $Light-Mode-Text;
+          }
+        }
+        .search-results {
+          p {
+            &:hover {
+              background-color: $light-mode-hover-color;
+            }
+          }
+        }
+      }
+      .filter {
+        .filter-header,
+        .filter-results {
+          background-color: $Dark-Mode-Text-Light-Mode-Elements;
+          color: $Light-Mode-Text;
+        }
+        .filter-results {
+          p {
+            &:hover {
+              background-color: $light-mode-hover-color;
+            }
+          }
+        }
+      }
+    }
+    .main-content {
+      .card {
+        background-color: $Dark-Mode-Text-Light-Mode-Elements;
+        color: $Light-Mode-Text;
+      }
+    }
+  }
+  .detailedPage.light-mode {
+    color: $Light-Mode-Text;
+    .detailedPage-header {
+      background-color: $Dark-Mode-Text-Light-Mode-Elements;
+      &:hover {
+        background-color: $light-mode-hover-color;
+      }
+    }
+    .detailedPage-content {
+      .border-countries-container {
+        .b-countries {
+          background-color: $Dark-Mode-Text-Light-Mode-Elements;
+          &:hover {
+            background-color: $light-mode-hover-color;
+          }
+        }
+      }
+    }
+  }
+
   .header {
     font-size: 14px;
     width: 100%;
@@ -40,7 +116,7 @@ img {
       cursor: pointer;
       transition: 0.1s;
       &:hover {
-        color: rgb(241, 241, 241);
+        color: rgb(230, 230, 230);
       }
     }
   }
@@ -52,6 +128,7 @@ img {
     justify-content: center;
     align-items: center;
     gap: $sections-gap;
+    padding: 20px 0;
     .filter-side {
       width: 100%;
       display: flex;
@@ -293,9 +370,13 @@ img {
   }
 }
 
+@media (max-width: 1440px) {
+  .container {
+    width: 100%;
+  }
+}
 @media (max-width: 767px) {
   .container {
-    width: 375px;
     .header {
       padding: 20px;
       h1 {
@@ -303,16 +384,12 @@ img {
       }
     }
     .main {
-      gap: 20px;
-      .main-content {
-        padding: 0 20px 0;
-      }
       .filter-side {
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         .search {
           .search-header {
-            width: $filter-width / 3;
+            width: $filter-width / 1.5;
             height: 50px;
             padding: 0 10px;
             gap: 5px;
@@ -322,12 +399,12 @@ img {
             }
           }
           .search-results {
-            width: $filter-width / 3;
+            width: $filter-width / 1.5;
           }
         }
         .filter {
           .filter-header {
-            width: $filter-width / 3;
+            width: $filter-width / 1.5;
             height: 50px;
             padding: 0 10px;
             gap: 5px;
@@ -336,10 +413,14 @@ img {
             }
           }
           .filter-results {
-            width: $filter-width / 4;
+            width: $filter-width / 2.5;
             padding: 10px;
           }
         }
+      }
+      gap: 20px;
+      .main-content {
+        padding: 0 20px 0;
       }
     }
 
@@ -358,6 +439,103 @@ img {
           align-items: center;
           width: 100%;
           flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 667px) {
+  .container {
+    .main {
+      .filter-side {
+        .search {
+          .search-header {
+            width: $filter-width / 2;
+          }
+          .search-results {
+            width: $filter-width / 2;
+          }
+        }
+        .filter {
+          .filter-header {
+            width: $filter-width / 2;
+          }
+          .filter-results {
+            width: $filter-width / 2;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 557px) {
+  .container {
+    .main {
+      .filter-side {
+        justify-content: center;
+        .search {
+          .search-header {
+            width: $filter-width / 2;
+          }
+          .search-results {
+            width: $filter-width / 2;
+          }
+        }
+        .filter {
+          .filter-header {
+            width: $filter-width / 2;
+          }
+          .filter-results {
+            width: $filter-width / 2;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    .main {
+      .filter-side {
+        .search {
+          .search-header {
+            width: $filter-width / 2.5;
+          }
+          .search-results {
+            width: $filter-width / 2.5;
+          }
+        }
+        .filter {
+          .filter-header {
+            width: $filter-width / 2.5;
+          }
+          .filter-results {
+            width: $filter-width / 2.5;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 367px) {
+  .container {
+    .main {
+      .filter-side {
+        .search {
+          .search-header {
+            width: $filter-width / 3;
+          }
+          .search-results {
+            width: $filter-width / 3;
+          }
+        }
+        .filter {
+          .filter-header {
+            width: $filter-width / 3;
+          }
+          .filter-results {
+            width: $filter-width / 3;
+          }
         }
       }
     }
